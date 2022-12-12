@@ -44,11 +44,13 @@ npm run build
 ```sh
 npm run lint
 ```
-## commit type instructions : 
-* feat: new feature
-* fix: bug fix
-* style: code style not css style
-* refactor: rewrite a module code in a better way
-* docs: document modified
-* ci: workflow
-* chore: some chores
+
+## commit type instructions :
+
+- feat: new feature
+- fix: bug fix
+- style: code style not css style
+- refactor: rewrite a module code in a better way
+- docs: document modified
+- ci: workflow
+- chore: some chores
