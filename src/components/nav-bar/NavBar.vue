@@ -1,22 +1,12 @@
 <template>
-  <div
-    class="h-60px flex justify-between items-center hover:bg-white text-blue-300 fixed top-0 left-0 right-0"
-  >
+  <div class="h-60px flex justify-between items-center hover:bg-white text-blue-300 fixed top-0 left-0 right-0">
     <div class="left pl-8 text-2xl italic cursor-pointer">blog</div>
     <div class="right flex items-center pr-8 h-full">
       <div class="list" v-for="(item, index) in menuBar" :key="index">
-        <div
-          class="text-2xl mx-4 cursor-pointer hover:border-b-2"
-          v-if="item.type === 'button'"
-        >
+        <div class="text-2xl mx-4 cursor-pointer hover:border-b-2" v-if="item.type === 'button'">
           {{ item.text }}
         </div>
-        <img
-          v-else
-          class="w-12 h-12 rounded-full ml-4 cursor-pointer"
-          :src="item.img"
-          alt=""
-        />
+        <img v-else class="w-12 h-12 rounded-full ml-4 cursor-pointer" :src="item.img" alt="" />
       </div>
       <div class="ml-4" @click="changDark">
         <svg
@@ -75,17 +65,17 @@ const menuBar: Ref<MenuItem[]> = ref<MenuItem[]>([
   {
     type: "button",
     text: "首页",
-    url: "/",
+    url: "/"
   },
   {
     type: "button",
     text: "文章",
-    url: "/",
+    url: "/"
   },
   {
     type: "img",
-    img: "/logo.jpeg",
-  },
+    img: "/logo.jpeg"
+  }
 ]);
 handleDark();
 </script>

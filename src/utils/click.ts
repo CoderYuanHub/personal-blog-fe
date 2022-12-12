@@ -1,5 +1,5 @@
 function clickEffect() {
-  let balls = [];
+  const balls = [];
   let longPressed = false;
   let longPress;
   let multiplier = 0;
@@ -41,14 +41,7 @@ function clickEffect() {
         clearInterval(longPress);
         if (longPressed == true) {
           document.body.classList.remove("is-longpress");
-          pushBalls(
-            randBetween(
-              50 + Math.ceil(multiplier),
-              100 + Math.ceil(multiplier)
-            ),
-            e.clientX,
-            e.clientY
-          );
+          pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
           longPressed = false;
         }
         document.body.classList.remove("is-pressed");
@@ -58,8 +51,8 @@ function clickEffect() {
     window.addEventListener(
       "mousemove",
       function (e) {
-        let x = e.clientX;
-        let y = e.clientY;
+        const x = e.clientX;
+        const y = e.clientY;
         pointer.style.top = y + "px";
         pointer.style.left = x + "px";
       },
@@ -79,11 +72,11 @@ function clickEffect() {
     height = canvas.height = window.innerHeight;
     origin = {
       x: width / 2,
-      y: height / 2,
+      y: height / 2
     };
     normal = {
       x: width / 2,
-      y: height / 2,
+      y: height / 2
     };
   }
   class Ball {
@@ -126,7 +119,7 @@ function clickEffect() {
     ctx.fillStyle = "rgba(255, 255, 255, 0)";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < balls.length; i++) {
-      let b = balls[i];
+      const b = balls[i];
       if (b.r < 0) continue;
       ctx.fillStyle = b.color;
       ctx.beginPath();
@@ -145,14 +138,8 @@ function clickEffect() {
 
   function removeBall() {
     for (let i = 0; i < balls.length; i++) {
-      let b = balls[i];
-      if (
-        b.x + b.r < 0 ||
-        b.x - b.r > width ||
-        b.y + b.r < 0 ||
-        b.y - b.r > height ||
-        b.r < 0
-      ) {
+      const b = balls[i];
+      if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
         balls.splice(i, 1);
       }
     }

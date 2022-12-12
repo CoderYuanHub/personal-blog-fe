@@ -12,16 +12,16 @@ const router = createRouter({
         {
           path: "/home",
           name: "home",
-          component: () => import("@/views/home"),
-        },
-      ],
+          component: () => import("@/views/home")
+        }
+      ]
     },
     {
       path: "/:pathMatch(.*)",
       name: "404",
-      component: () => import("@/components/not-found"),
-    },
-  ],
+      component: () => import("@/components/not-found")
+    }
+  ]
 });
 
 export default router;
