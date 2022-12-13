@@ -1,12 +1,12 @@
 function clickEffect() {
-  const balls = [];
-  let longPressed = false;
-  let longPress;
-  let multiplier = 0;
-  let width, height;
-  let origin;
-  let normal;
-  let ctx;
+  const balls: any[] = [];
+  let longPressed: boolean = false;
+  let longPress: any;
+  let multiplier: number = 0;
+  let width: number, height: number;
+  let origin: any;
+  let normal: any;
+  let ctx: any;
   const colours = ["#F73859", "#14FFEC", "#00E0FF", "#FF99FE", "#FAF15D"];
   const canvas = document.createElement("canvas");
   document.body.appendChild(canvas);
@@ -39,7 +39,7 @@ function clickEffect() {
       "mouseup",
       function (e) {
         clearInterval(longPress);
-        if (longPressed == true) {
+        if (longPressed) {
           document.body.classList.remove("is-longpress");
           pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
           longPressed = false;
@@ -80,11 +80,19 @@ function clickEffect() {
     };
   }
   class Ball {
+    x: number = 0;
+    y: number = 0;
+    angle: number = 0;
+    multiplier: number = 0;
+    vx: number = 0;
+    vy: number = 0;
+    r: number = 0;
+    color: any = 0;
     constructor(x = origin.x, y = origin.y) {
       this.x = x;
       this.y = y;
       this.angle = Math.PI * 2 * Math.random();
-      if (longPressed == true) {
+      if (longPressed) {
         this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
       } else {
         this.multiplier = randBetween(6, 12);
@@ -111,7 +119,7 @@ function clickEffect() {
     }
   }
 
-  function randBetween(min, max) {
+  function randBetween(min: number, max: number) {
     return Math.floor(Math.random() * max) + min;
   }
 
@@ -127,7 +135,7 @@ function clickEffect() {
       ctx.fill();
       b.update();
     }
-    if (longPressed == true) {
+    if (longPressed) {
       multiplier += 0.2;
     } else if (!longPressed && multiplier >= 0) {
       multiplier -= 0.4;
