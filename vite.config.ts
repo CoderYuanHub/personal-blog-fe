@@ -11,9 +11,9 @@ export default defineConfig(({ command }) => {
     plugins: [vue(), vueJsx()],
     resolve: {
       alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url)),
-      },
-    },
+        "@": fileURLToPath(new URL("./src", import.meta.url))
+      }
+    }
   };
   const otherConfig = {};
   if (command === "serve") {
@@ -21,8 +21,8 @@ export default defineConfig(({ command }) => {
       server: {
         host: "localhost",
         port: 8080,
-        proxy: {},
-      },
+        proxy: {}
+      }
     };
     Object.assign(otherConfig, devConfig);
   } else {
@@ -37,10 +37,10 @@ export default defineConfig(({ command }) => {
           output: {
             chunkFileNames: "js/[name]-[hash].js", //入口文件名
             entryFileNames: "js/[name]-[hash].js", //出口文件名位置
-            assetFileNames: "[ext]/[name]-[hash].[ext]",
-          },
-        },
-      },
+            assetFileNames: "[ext]/[name]-[hash].[ext]"
+          }
+        }
+      }
     };
     Object.assign(otherConfig, buildConfig);
   }
