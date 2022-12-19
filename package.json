@@ -13,6 +13,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "less": "^4.1.3",
     "pinia": "^2.0.26",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
