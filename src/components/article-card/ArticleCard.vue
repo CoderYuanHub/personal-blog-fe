@@ -61,7 +61,7 @@
     <div class="w-1/2 h-full bg-cover overflow-hidden">
       <div
         class="w-full h-full bg-center hover:rotate-6 hover:scale-150 transition duration-150 ease-in-out"
-        style="background-image: url('./public/logo.jpeg')"
+        style="background-image: url('/logo.jpeg')"
       ></div>
     </div>
   </div>
