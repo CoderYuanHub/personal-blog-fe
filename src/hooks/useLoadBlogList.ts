@@ -16,7 +16,9 @@ export const useLoadBlogList = (props: IProps) => {
     const clientHeight = document.documentElement.clientHeight;
     const scrollHeight = document.documentElement.scrollHeight;
     if (scrollTop + clientHeight >= scrollHeight) {
-      const { data: { blogList } } = await getBlogList(params);
+      const {
+        data: { blogList }
+      } = await getBlogList(params);
       originData.value.push(...blogList);
       params.pageNum++;
     }
