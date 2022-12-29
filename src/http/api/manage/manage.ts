@@ -3,6 +3,8 @@ import type {
   IData,
   ILoginParams,
   ILoginRes,
+  ILogoutParams,
+  ILogoutRes,
   ICreateBlogParams,
   ICreateBlogRes,
   IEditBlogParams,
@@ -14,6 +16,14 @@ import type {
 export function login(userInfo: ILoginParams) {
   return http.post<IData<ILoginRes>>({
     url: "/login",
+    data: userInfo
+  });
+}
+
+// 登出
+export function logout(userInfo: ILogoutParams) {
+  return http.post<IData<ILogoutRes>>({
+    url: "/logout",
     data: userInfo
   });
 }

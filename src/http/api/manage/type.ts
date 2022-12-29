@@ -9,7 +9,15 @@ export interface ILoginParams {
   password: string;
 }
 
-export interface ILoginRes {}
+export interface ILoginRes {
+  username: string;
+}
+
+export interface ILogoutParams {
+  username: string;
+}
+
+export interface ILogoutRes {}
 
 export interface ICreateBlogParams {
   title: string;
