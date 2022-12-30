@@ -10,8 +10,8 @@ export interface ISchema {
   attrs?: SchemaAttrsType[SchemaComType];
 }
 
-export interface JFromCom {
-  getFormData: () => Record<string, unknown>;
+export interface IFromCom {
+  getFormData: () => Record<string, any>;
   setFormData: (key: string, value: unknown) => void;
   reset: () => void;
   validate: () => Promise<boolean>;

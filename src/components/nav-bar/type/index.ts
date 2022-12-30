@@ -3,4 +3,5 @@ export interface MenuItem {
   text?: string;
   url?: string;
   img?: string;
+  hide?: boolean;
 }

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { sessionCache } from "@/utils/cache";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,6 +14,11 @@ const router = createRouter({
           path: "/home",
           name: "home",
           component: () => import("@/views/home")
+        },
+        {
+          path: "/admin",
+          name: "admin",
+          component: () => import("@/views/admin")
         }
       ]
     },
@@ -22,6 +28,12 @@ const router = createRouter({
       component: () => import("@/components/not-found")
     }
   ]
+});
+
+router.beforeEach(to => {
+  const userStore = sessionCache.getCache("userStore") || {};
+  const { isLogin } = userStore;
+  if (to.name === "admin" && !isLogin) return "/404";
 });
 
 export default router;

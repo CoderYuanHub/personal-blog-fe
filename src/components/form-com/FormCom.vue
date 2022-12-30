@@ -13,9 +13,9 @@
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { FormInstance } from "element-plus";
-import { ISchema } from "./type";
 import { formItemMap } from "./config";
+import type { FormInstance } from "element-plus";
+import type { ISchema } from "./type";
 
 interface IProps {
   schema: ISchema[];

@@ -1,8 +1,10 @@
 <template>
   <div class="h-60px flex justify-between items-center hover:bg-white text-blue-300 fixed top-0 left-0 right-0">
-    <div class="left pl-8 text-2xl italic cursor-pointer">blog</div>
+    <LoginCom>
+      <div class="left pl-8 text-2xl italic cursor-pointer">blog</div>
+    </LoginCom>
     <div class="right flex items-center pr-8 h-full">
-      <div class="list" v-for="(item, index) in menuBar" :key="index">
+      <div class="list" v-for="(item, index) in showMenuBar" :key="index" @click="skipMenu(item.url)">
         <div class="text-2xl mx-4 cursor-pointer hover:border-b-2" v-if="item.type === 'button'">
           {{ item.text }}
         </div>
@@ -45,23 +47,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, type Ref } from "vue";
+import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
+import LoginCom from "@/components/login-com";
 import type { MenuItem } from "./type";
-const isDark: Ref<boolean> = ref<boolean>(false);
-const handleDark = (): void => {
-  if (window.matchMedia("(prefers-color-scheme: dark)")) {
-    isDark.value = true;
-  }
-};
-const changDark = (): void => {
-  isDark.value = !isDark.value;
-  if (isDark.value) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-};
-const menuBar: Ref<MenuItem[]> = ref<MenuItem[]>([
+import { useUserStore } from "@/stores/useUserStore";
+
+const router = useRouter();
+const userStore = useUserStore();
+
+const showAdmin = computed(() => {
+  const { isLogin } = userStore;
+  return !isLogin;
+});
+
+const menuBar = ref<MenuItem[]>([
   {
     type: "button",
     text: "首页",
@@ -73,10 +73,42 @@ const menuBar: Ref<MenuItem[]> = ref<MenuItem[]>([
     url: "/"
   },
   {
+    type: "button",
+    text: "管理",
+    url: "/admin",
+    hide: showAdmin as unknown as boolean
+  },
+  {
     type: "img",
     img: "/logo.jpeg"
   }
 ]);
+
+const showMenuBar = computed(() => {
+  return menuBar.value.filter(item => !item.hide);
+});
+
+const skipMenu = (path: string) => {
+  router.push({ path });
+};
+
+const isDark = ref(false);
+
+const handleDark = () => {
+  if (window.matchMedia("(prefers-color-scheme: dark)")) {
+    isDark.value = true;
+  }
+};
+
+const changDark = () => {
+  isDark.value = !isDark.value;
+  if (isDark.value) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+};
+
 handleDark();
 </script>
 
