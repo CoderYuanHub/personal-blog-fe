@@ -15,6 +15,9 @@ export interface BlogItem {
   title: string;
   createAt: string;
   content: string;
+  url: string;
+  comment: number;
+  hot: number;
 }
 
 export interface IGetBlogListRes {

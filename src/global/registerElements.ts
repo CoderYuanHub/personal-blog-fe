@@ -30,7 +30,7 @@ const components = [
   ElTableColumn
 ];
 
-export default function(app: App<Element>): void {
+export default function (app: App<Element>): void {
   for (const cpn of components) {
     app.component(cpn.name, cpn);
   }

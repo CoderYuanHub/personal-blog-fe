@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { TableHeaderType, TableDataType } from "./type";
+import type { TableHeaderType, TableDataType } from "./type";
 
 interface IProps {
   tableHeader: TableHeaderType;
