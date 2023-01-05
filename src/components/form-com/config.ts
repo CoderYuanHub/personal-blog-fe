@@ -1,8 +1,9 @@
+import { CustomSelect } from "@/components/form-com-item";
 import type { InputProps, ISelectProps, SwitchProps } from "element-plus";
 
 export const formItemMap = {
   input: "el-input",
-  select: "el-select",
+  select: CustomSelect,
   switch: "el-switch"
 };
 

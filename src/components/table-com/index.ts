@@ -1,3 +1,3 @@
-import TableCom from "./JTable.vue";
+import TableCom from "./TableCom.vue";
 
 export default TableCom;

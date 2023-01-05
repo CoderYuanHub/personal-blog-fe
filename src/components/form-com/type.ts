@@ -8,6 +8,7 @@ export interface ISchema {
   key: string;
   itemAttrs?: Partial<FormItemProps>;
   attrs?: SchemaAttrsType[SchemaComType];
+  custom?: boolean;
 }
 
 export interface IFromCom {
